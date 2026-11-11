@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Matched for Equipment Financing | Leverline</title>
+<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="scrollbar"></div>
+<header class="nav scrolled">
+  <div class="wrap">
+    <a class="logo" href="index.html"><i></i><span data-brand>Leverline</span></a>
+    <nav><a href="index.html">Home</a><a href="dealers.html">For equipment sellers</a></nav>
+  </div>
+</header>
+
+<section class="hero page-top" style="padding-bottom:70px">
+  <div class="blob a"></div><div class="blob b"></div>
+  <div class="gridlines"></div>
+  <div style="max-width:720px;margin:0 auto;padding:0 22px">
+    <span class="kicker" data-reveal>Financing request</span>
+    <h2 data-reveal>Three quick steps.</h2>
+    <p class="sub" data-reveal>About two minutes. No Social Security number, no credit pull at this step.</p>
+
+    <div class="notice" id="dealer-banner" hidden>Financing request for a purchase from <strong id="dealer-name" style="text-transform:capitalize"></strong>.</div>
+    <div class="notice" id="demo-notice" hidden><strong>Demo mode.</strong> This site has no form endpoint configured yet, so submissions are saved only in this browser and are not sent anywhere.</div>
+
+    <div class="steps-bar" data-reveal>
+      <div>1 · The equipment</div><div>2 · Your business</div><div>3 · Contact</div>
+    </div>
+
+    <form class="card hero-card" data-lead-form="financing-request" data-reveal novalidate>
+      <input type="hidden" name="dealer">
+      <input type="hidden" name="term">
+
+      <div class="step-panel">
+        <h3>What are you buying?</h3>
+        <label for="item">Equipment</label>
+        <input type="text" id="item" name="item" placeholder="e.g. 2019 Bobcat T650 skid steer" required>
+        <div class="err">Tell us what the equipment is.</div>
+
+        <div class="row">
+          <div>
+            <label for="amount">Price ($)</label>
+            <input type="number" id="amount" name="amount" min="1000" step="500" placeholder="50000" required>
+            <div class="err">Enter the price (at least $1,000).</div>
+          </div>
+          <div>
+            <label for="condition">Condition</label>
+            <select id="condition" name="condition"><option>Used</option><option>New</option></select>
+          </div>
+        </div>
+
+        <label for="seller">Who is selling it? <span class="optional">(optional)</span></label>
+        <input type="text" id="seller" name="seller" placeholder="Dealer name, auction, or private seller">
+
+        <div class="step-nav"><button type="button" class="btn" data-next>Next: your business <span class="arr">→</span></button></div>
+      </div>
+
+      <div class="step-panel">
+        <h3>About your business</h3>
+        <label for="business">Business name</label>
+        <input type="text" id="business" name="business" required>
+        <div class="err">Enter your business name.</div>
+
+        <div class="row">
+          <div>
+            <label for="tib">Time in business</label>
+            <select id="tib" name="timeInBusiness" required>
+              <option value="">Select…</option><option>Not started yet</option><option>Under 1 year</option><option>1–2 years</option><option>2–5 years</option><option>5+ years</option>
+            </select>
+            <div class="err">Select one.</div>
+          </div>
+          <div>
+            <label for="state">State</label>
+            <select id="state" name="state" required>
+              <option value="">Select…</option>
+              <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+            </select>
+            <div class="err">Select your state.</div>
+          </div>
+        </div>
+
+        <label for="credit">Owner's credit (your best guess)</label>
+        <select id="credit" name="creditEstimate" required>
+          <option value="">Select…</option><option>Excellent (720+)</option><option>Good (660–719)</option><option>Fair (600–659)</option><option>Challenged (under 600)</option><option>Not sure</option>
+        </select>
+        <div class="err">Select one.</div>
+
+        <div class="step-nav">
+          <button type="button" class="btn ghost" data-back>← Back</button>
+          <button type="button" class="btn" data-next>Next: contact <span class="arr">→</span></button>
+        </div>
+      </div>
+
+      <div class="step-panel">
+        <h3>How do we reach you?</h3>
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" autocomplete="name" required>
+        <div class="err">Enter your name.</div>
+        <div class="row">
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+            <div class="err">Enter a valid email.</div>
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+            <div class="err">Enter a 10-digit phone number.</div>
+          </div>
+        </div>
+
+        <label class="check" style="margin-top:20px">
+          <input type="checkbox" name="consent" required>
+          <span>I agree that <span data-brand>Leverline</span> may share this request with third-party financing providers and that <span data-brand>Leverline</span> and those providers may contact me by phone, text, or email about it. I understand <span data-brand>Leverline</span> is not a lender and may be paid by the provider if financing closes. Consent is not a condition of any purchase.</span>
+        </label>
+        <div class="err">Please check the box to continue.</div>
+
+        <div class="notice" id="send-fail" hidden>We could not send your request. Please try again, or email us at <a data-email href="#"></a>.</div>
+        <div class="step-nav">
+          <button type="button" class="btn ghost" data-back>← Back</button>
+          <button type="submit" class="btn">Send my request</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="card success" id="success" hidden>
+      <svg class="checkmark" viewBox="0 0 84 84"><circle cx="42" cy="42" r="38"/><path d="M26 43l11 11 21-23"/></svg>
+      <h3>Request received</h3>
+      <p>Thanks. We will review your request and be in touch within one business day with next steps. Keep an eye on your phone and email.</p>
+      <p><a href="index.html">Back to home</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong data-brand>Leverline</strong> is not a lender and does not make credit decisions. We connect businesses with third-party financing providers and may be paid by those providers when financing closes. All financing is subject to the provider's approval. Commercial financing only.</p>
+    <p>Contact: <a data-email href="#"></a> · © <span data-year></span> <span data-brand>Leverline</span></p>
+  </div>
+</footer>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
