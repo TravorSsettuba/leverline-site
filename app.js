@@ -11,6 +11,7 @@
     el.textContent = S.contactEmail || "";
     if (el.tagName === "A") el.href = "mailto:" + (S.contactEmail || "");
   });
+  if (!S.contactEmail) $$("[data-contact]").forEach(function (el) { el.hidden = true; });
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
   function payment(principal, aprPct, months) {
