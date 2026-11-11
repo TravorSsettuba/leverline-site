@@ -1,7 +1,7 @@
 // Edit these before going live.
 window.SITE = {
   brand: "Leverline",                 // placeholder name: check domain + trademark before using
-  domain: "https://YOUR-DOMAIN.com",  // where this site is hosted (used in the dealer embed snippet)
+  domain: "https://travorssettuba.github.io/leverline-site",  // where this site is hosted (used in the dealer embed snippet)
   contactEmail: "hello@YOUR-DOMAIN.com",
   // Where form submissions are POSTed as JSON. Use a form backend such as
   // Formspree, Basin, or a Google Apps Script web app URL.
