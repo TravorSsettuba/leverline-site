@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Get Matched for Equipment Financing | Leverline</title>
+<title>Get Matched for Equipment Finance | Leverline</title>
 <script>document.documentElement.classList.add("js")</script>
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -20,15 +20,15 @@
   <div class="blob a"></div><div class="blob b"></div>
   <div class="gridlines"></div>
   <div style="max-width:720px;margin:0 auto;padding:0 22px">
-    <span class="kicker" data-reveal>Financing request</span>
+    <span class="kicker" data-reveal>Finance request</span>
     <h2 data-reveal>Three quick steps.</h2>
-    <p class="sub" data-reveal>About two minutes. No Social Security number, no credit pull at this step.</p>
+    <p class="sub" data-reveal>About two minutes. No credit search at this step. For UK limited companies and LLPs.</p>
 
-    <div class="notice" id="dealer-banner" hidden>Financing request for a purchase from <strong id="dealer-name" style="text-transform:capitalize"></strong>.</div>
+    <div class="notice" id="dealer-banner" hidden>Finance request for a purchase from <strong id="dealer-name" style="text-transform:capitalize"></strong>.</div>
     <div class="notice" id="demo-notice" hidden><strong>Demo mode.</strong> This site has no form endpoint configured yet, so submissions are saved only in this browser and are not sent anywhere.</div>
 
     <div class="steps-bar" data-reveal>
-      <div>1 · The equipment</div><div>2 · Your business</div><div>3 · Contact</div>
+      <div>1 · The equipment</div><div>2 · Your company</div><div>3 · Contact</div>
     </div>
 
     <form class="card hero-card" data-lead-form="financing-request" data-reveal novalidate>
@@ -38,14 +38,14 @@
       <div class="step-panel">
         <h3>What are you buying?</h3>
         <label for="item">Equipment</label>
-        <input type="text" id="item" name="item" placeholder="e.g. 2019 Bobcat T650 skid steer" required>
+        <input type="text" id="item" name="item" placeholder="e.g. 2019 JCB 3CX backhoe loader" required>
         <div class="err">Tell us what the equipment is.</div>
 
         <div class="row">
           <div>
-            <label for="amount">Price ($)</label>
+            <label for="amount">Price (£, excluding VAT)</label>
             <input type="number" id="amount" name="amount" min="1000" step="500" placeholder="50000" required>
-            <div class="err">Enter the price (at least $1,000).</div>
+            <div class="err">Enter the price (at least £1,000).</div>
           </div>
           <div>
             <label for="condition">Condition</label>
@@ -56,36 +56,43 @@
         <label for="seller">Who is selling it? <span class="optional">(optional)</span></label>
         <input type="text" id="seller" name="seller" placeholder="Dealer name, auction, or private seller">
 
-        <div class="step-nav"><button type="button" class="btn" data-next>Next: your business <span class="arr">→</span></button></div>
+        <div class="step-nav"><button type="button" class="btn" data-next>Next: your company <span class="arr">→</span></button></div>
       </div>
 
       <div class="step-panel">
-        <h3>About your business</h3>
-        <label for="business">Business name</label>
+        <h3>About your company</h3>
+        <label for="btype">Business type</label>
+        <select id="btype" name="businessType" required data-ltd-only>
+          <option value="">Select…</option><option>Limited company</option><option>LLP</option><option>Sole trader</option><option>Partnership</option>
+        </select>
+        <div class="err">Select one.</div>
+        <div class="notice" id="ltd-only" hidden>Sorry, we can only help UK limited companies and LLPs. Finance for sole traders and partnerships is regulated differently, so please speak to an FCA-authorised finance broker.</div>
+
+        <label for="business">Registered company name</label>
         <input type="text" id="business" name="business" required>
-        <div class="err">Enter your business name.</div>
+        <div class="err">Enter your company name.</div>
 
         <div class="row">
           <div>
-            <label for="tib">Time in business</label>
+            <label for="tib">Time trading</label>
             <select id="tib" name="timeInBusiness" required>
               <option value="">Select…</option><option>Not started yet</option><option>Under 1 year</option><option>1–2 years</option><option>2–5 years</option><option>5+ years</option>
             </select>
             <div class="err">Select one.</div>
           </div>
           <div>
-            <label for="state">State</label>
+            <label for="state">Where is the company based?</label>
             <select id="state" name="state" required>
               <option value="">Select…</option>
-              <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+              <option>London</option><option>South East</option><option>South West</option><option>East of England</option><option>East Midlands</option><option>West Midlands</option><option>Yorkshire and the Humber</option><option>North West</option><option>North East</option><option>Wales</option><option>Scotland</option><option>Northern Ireland</option>
             </select>
-            <div class="err">Select your state.</div>
+            <div class="err">Select a region.</div>
           </div>
         </div>
 
-        <label for="credit">Owner's credit (your best guess)</label>
+        <label for="credit">Credit history of the company and its directors (best guess)</label>
         <select id="credit" name="creditEstimate" required>
-          <option value="">Select…</option><option>Excellent (720+)</option><option>Good (660–719)</option><option>Fair (600–659)</option><option>Challenged (under 600)</option><option>Not sure</option>
+          <option value="">Select…</option><option>Clean</option><option>Mostly good, a few late payments</option><option>Some CCJs or defaults</option><option>Not sure</option>
         </select>
         <div class="err">Select one.</div>
 
@@ -109,13 +116,13 @@
           <div>
             <label for="phone">Phone</label>
             <input type="tel" id="phone" name="phone" autocomplete="tel" required>
-            <div class="err">Enter a 10-digit phone number.</div>
+            <div class="err">Enter a valid UK phone number.</div>
           </div>
         </div>
 
         <label class="check" style="margin-top:20px">
           <input type="checkbox" name="consent" required>
-          <span>I agree that <span data-brand>Leverline</span> may share this request with third-party financing providers and that <span data-brand>Leverline</span> and those providers may contact me by phone, text, or email about it. I understand <span data-brand>Leverline</span> is not a lender and may be paid by the provider if financing closes. Consent is not a condition of any purchase.</span>
+          <span>I agree that <span data-brand>Leverline</span> may pass this request to finance brokers and lenders, and that <span data-brand>Leverline</span> and those firms may contact me by phone, text or email about it. I confirm I am applying on behalf of a UK limited company or LLP for business use. I understand <span data-brand>Leverline</span> is an introducer, not a lender, and may receive a commission if finance completes. See our <a href="privacy.html" target="_blank" rel="noopener">privacy notice</a>.</span>
         </label>
         <div class="err">Please check the box to continue.</div>
 
@@ -138,8 +145,8 @@
 
 <footer>
   <div class="wrap">
-    <p><strong data-brand>Leverline</strong> is not a lender and does not make credit decisions. We connect businesses with third-party financing providers and may be paid by those providers when financing closes. All financing is subject to the provider's approval. Commercial financing only.</p>
-    <p><span data-contact>Contact: <a data-email href="#"></a> · </span>© <span data-year></span> <span data-brand>Leverline</span></p>
+    <p><strong data-brand>Leverline</strong> is an introducer, not a lender or a broker, and does not give financial advice or make credit decisions. We introduce UK limited companies and LLPs to finance brokers and lenders for business-purpose finance, and we may receive a commission from them if finance completes. We are not authorised or regulated by the Financial Conduct Authority, and we do not introduce sole traders, partnerships or consumers. All finance is subject to status and the provider's approval. Business use only.</p>
+    <p><span data-contact>Contact: <a data-email href="#"></a> · </span><a href="privacy.html">Privacy</a> · © <span data-year></span> <span data-brand>Leverline</span></p>
   </div>
 </footer>
 <script src="config.js"></script>

@@ -2,7 +2,7 @@
   var S = window.SITE || {};
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
-  var money = function (n) { return "$" + Math.round(n).toLocaleString("en-US"); };
+  var money = function (n) { return "£" + Math.round(n).toLocaleString("en-GB"); };
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Brand + contact placeholders
@@ -164,6 +164,11 @@
     }
     if (!S.formEndpoint) { var demo = $("#demo-notice"); if (demo) demo.hidden = false; }
 
+    // Limited companies and LLPs only: stop sole traders and partnerships here
+    var ltd = $("[data-ltd-only]", form), ltdMsg = $("#ltd-only");
+    var notLtd = function () { return !!ltd && /sole|partnership/i.test(ltd.value) && !/LLP/.test(ltd.value); };
+    if (ltd) ltd.addEventListener("change", function () { if (ltdMsg) ltdMsg.hidden = !notLtd(); });
+
     // Clear error state as the user fixes a field
     form.addEventListener("input", function (e) { if (e.target.classList) e.target.classList.remove("invalid"); });
 
@@ -183,7 +188,7 @@
     if (panels.length) {
       go(0);
       $$("[data-next]", form).forEach(function (b) {
-        b.addEventListener("click", function () { if (validate(panels[cur])) go(cur + 1); });
+        b.addEventListener("click", function () { if (notLtd()) { ltdMsg.hidden = false; return; } if (validate(panels[cur])) go(cur + 1); });
       });
       $$("[data-back]", form).forEach(function (b) {
         b.addEventListener("click", function () { go(cur - 1, true); });
@@ -192,6 +197,7 @@
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      if (notLtd()) { if (ltdMsg) ltdMsg.hidden = false; return; }
       if (panels.length) {
         // Enter key on an earlier step advances instead of submitting
         if (cur < panels.length - 1) { if (validate(panels[cur])) go(cur + 1); return; }
@@ -208,6 +214,9 @@
         if (!f.name) return;
         data[f.name] = f.type === "checkbox" ? f.checked : f.value.trim();
       });
+
+      // The lead sheet has no business-type column, so keep it with the name
+      if (data.businessType && data.business) data.business += " [" + data.businessType + "]";
 
       var btn = $("button[type=submit]", form), label = btn.textContent;
       btn.disabled = true; btn.textContent = "Sending…";
@@ -257,7 +266,7 @@
       var id = slug(nameIn.value), price = Math.max(1000, Number(priceIn.value) || 45000);
       var base = (S.domain || "").replace(/\/$/, "");
       outPre.textContent = '<script src="' + base + '/widget.js" data-dealer="' + id + '" data-amount="' + price + '"><\/script>';
-      prev.firstChild.textContent = "Finance from " + money(payment(price, 9.5, 60)) + "/mo ";
+      prev.firstChild.textContent = "Business finance from " + money(payment(price, 9.5, 60)) + "/mo ";
       prev.href = "apply.html?dealer=" + id + "&amount=" + price;
     };
     nameIn.addEventListener("input", draw); priceIn.addEventListener("input", draw);

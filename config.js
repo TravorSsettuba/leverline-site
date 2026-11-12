@@ -9,6 +9,7 @@ window.SITE = {
   // saved in the visitor's browser and are NOT delivered to you.
   formEndpoint: "https://script.google.com/macros/s/AKfycbyKXCHROhqmpVstTbqtNTF0TwSeU3D5pX8dz1kSp4BLlIg4jCmlpoLjGWV_JaMGqpIFWw/exec",
   // Estimator assumptions (illustrative only, shown to visitors as estimates)
+  // UK asset finance illustration range
   aprLow: 8.5,
   aprHigh: 18,
   defaultTermMonths: 60
